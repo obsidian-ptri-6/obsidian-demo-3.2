@@ -1,22 +1,26 @@
+import { config } from 'https://deno.land/x/dotenv@v3.2.0/mod.ts';
 import { Pool } from 'https://deno.land/x/postgres/mod.ts';
 // import { PoolClient } from 'https://deno.land/x/postgres/client.ts';
 
-let pgPort: number | string | undefined = Deno.env.get('PG_PORT');
+const env = config();
+
+let pgPort: number | string | undefined = env.PG_PORT;
 if (typeof pgPort === 'string') {
   pgPort = parseInt(pgPort as string);
 }
 
-const config = {
-  user: Deno.env.get('PG_USER'),
-  database: Deno.env.get('PG_DATABASE'),
-  password: Deno.env.get('PG_PASSWORD'),
-  hostname: Deno.env.get('PG_HOSTNAME'),
+
+const dbSettings = {
+  user: env.PG_USER,
+  database: env.PG_DATABASE,
+  password: env.PG_PASSWORD,
+  hostname: env.PG_HOSTNAME,
   port: pgPort,
 };
 
 const POOL_CONNECTIONS = 3; // breaks at 10+ due to ElephantSQL
 
-let pool = new Pool(config, POOL_CONNECTIONS);
+let pool = new Pool(dbSettings, POOL_CONNECTIONS);
 
 const resolvers = {
   Query: {
@@ -87,7 +91,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
     actors: async (_a: string, { input }: { input: { film?: string, actor?:string } }) => {
@@ -134,7 +138,7 @@ const resolvers = {
               console.log(err);
               console.log('resetting connection');
               pool.end();
-              pool = new Pool(config, POOL_CONNECTIONS);
+              pool = new Pool(dbSettings, POOL_CONNECTIONS);
             }
           }
           if (input.actor) {
@@ -158,7 +162,7 @@ const resolvers = {
               console.log(err);
               console.log('resetting connection');
               pool.end();
-              pool = new Pool(config, POOL_CONNECTIONS);
+              pool = new Pool(dbSettings, POOL_CONNECTIONS);
             }
           }
         }
@@ -167,7 +171,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
   },
@@ -206,7 +210,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
   },
@@ -244,7 +248,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
   },
@@ -292,7 +296,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
 
@@ -323,7 +327,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
 
@@ -359,7 +363,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
     deleteActor: async (_a: string, { id }: { id: string }) => {
@@ -389,7 +393,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
 
@@ -424,7 +428,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
 
@@ -493,7 +497,7 @@ const resolvers = {
         console.log(err);
         console.log('resetting connection');
         pool.end();
-        pool = new Pool(config, POOL_CONNECTIONS);
+        pool = new Pool(dbSettings, POOL_CONNECTIONS);
       }
     },
   },
