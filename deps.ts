@@ -1,16 +1,16 @@
-import React from 'https://dev.jspm.io/react';
-import ReactDOMServer from 'https://dev.jspm.io/react-dom/server';
-import ReactDom from 'https://dev.jspm.io/react-dom';
-import Chart from 'https://dev.jspm.io/chart.js';
+import React from 'https://jspm.dev/react';
+import ReactDOMServer from 'https://jspm.dev/react-dom/server';
+import ReactDom from 'https://jspm.dev/react-dom';
+import { Chart } from 'https://jspm.dev/chart.js';
 
 import {
   ObsidianWrapper,
   useObsidian,
   BrowserCache,
-} from 'https://deno.land/x/obsidian/clientMod.ts';
-// } from '../obsidian/clientMod.ts';
+// } from 'https://deno.land/x/obsidian/clientMod.ts'; FIX THIS
+} from '../obsidian/clientMod.ts';
 
-import rsh from 'https://dev.jspm.io/react-syntax-highlighter';
+import rsh from 'https://jspm.dev/react-syntax-highlighter';
 
 const realRSH: any = rsh;
 

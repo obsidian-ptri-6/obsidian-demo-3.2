@@ -76,7 +76,7 @@ const CacheDisplay = (props: any) => {
               <div>Cache:</div>
               <button
                 type="button"
-                className="content-center bg-transparent  text-indigo-700 hover:text-indigo-800 focus:outline-none"
+                className="content-center bg-transparent text-indigo-700 hover:text-indigo-800 focus:outline-none"
                 onClick={onClick}
               >
                 Clear Cache

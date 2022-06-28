@@ -229,11 +229,15 @@ function CardsContainer(props: any) {
   } = allQueries;
 
   const fetchAllMovies = async (e: any) => {
+    console.log('fetchAllMovies before query is set', query)
+    console.log('fetchAllMovies before gqlRequest is set', gqlRequest)
     setGqlRequest(allMoviesQuery);
     const start = Date.now();
     const res = await query(allMoviesQuery);
+    console.log('fetchAllMovies res', res)
     setQueryTime(Date.now() - start);
     const actorRes = await query(allActorsQuery);
+    console.log('fetchAllMovies actorRes', actorRes)
     setActorResponse(actorRes.data);
     setDisplay('');
     setDashResponse(res.data);
@@ -241,8 +245,14 @@ function CardsContainer(props: any) {
     setDisplay('all movies');
     setTimeout(() => setCache(new BrowserCache(cache.storage)), 1);
     console.log('all movies', res);
+    waiter();
   };
 
+  const waiter = async () =>{
+    console.log('fetchAllMovies after gqlRequest is set', gqlRequest)
+    console.log('fetchAllMovies after query is set', query)
+
+  }
   const fetchAllActors = async (e: any) => {
     setGqlRequest(allActorsQuery);
     const start = Date.now();
@@ -274,6 +284,7 @@ function CardsContainer(props: any) {
   };
 
   const fetchReleaseYear = async (e: any) => {
+    console.log(e)
     setGqlRequest(moviesByReleaseYear);
     const start = Date.now();
     const res = await query(moviesByReleaseYear);

@@ -138,7 +138,7 @@ const CardDisplay = (props: any) => {
           </ul>
           <form onSubmit={handleSubmit}>
             <select
-              className="m-1 p-1 block w-full  pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              className="m-1 p-1 block w-full pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               required
               value={value}
               onChange={handleChange}
@@ -316,7 +316,7 @@ const CardDisplay = (props: any) => {
           <div>
             <form onSubmit={handleSubmit} id={props.id}>
               <select
-                className="m-1 p-1 block w-full  pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                className="m-1 p-1 block w-full pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                 required
                 value={valueMovie}
                 onChange={handleChange}
