@@ -150,40 +150,22 @@ function CardsContainer(props: any) {
     }
   `,
 
-    moviesByReleaseYear:
-    `query ($order: ReleaseYearOrder) {
-      movies(input: {order : $order }) {
+    moviesByReleaseYear: `query {
+      movies(input: {order : DESC }) {
         id
         __typename
         title
         releaseYear
+        genre
         actors {
           id
           __typename
           firstName
           lastName
         }
-        genre
       }
-  }
-   ` 
-    
-//     `query {
-//     movies(input: {order : ASC }) {
-//       id
-//       __typename
-//       title
-//       releaseYear
-//       actors {
-//         id
-//         __typename
-//         firstName
-//         lastName
-//       }
-//       genre
-//     }
-// }
-//   `
+    }
+   `
   ,
 
     addMovie: `mutation {
@@ -229,8 +211,6 @@ function CardsContainer(props: any) {
   } = allQueries;
 
   const fetchAllMovies = async (e: any) => {
-    console.log('fetchAllMovies before query is set', query)
-    console.log('fetchAllMovies before gqlRequest is set', gqlRequest)
     setGqlRequest(allMoviesQuery);
     const start = Date.now();
     const res = await query(allMoviesQuery);
@@ -245,14 +225,8 @@ function CardsContainer(props: any) {
     setDisplay('all movies');
     setTimeout(() => setCache(new BrowserCache(cache.storage)), 1);
     console.log('all movies', res);
-    waiter();
   };
 
-  const waiter = async () =>{
-    console.log('fetchAllMovies after gqlRequest is set', gqlRequest)
-    console.log('fetchAllMovies after query is set', query)
-
-  }
   const fetchAllActors = async (e: any) => {
     setGqlRequest(allActorsQuery);
     const start = Date.now();

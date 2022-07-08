@@ -1,6 +1,5 @@
 import { config } from 'https://deno.land/x/dotenv@v3.2.0/mod.ts';
 import { Pool } from 'https://deno.land/x/postgres/mod.ts';
-// import { PoolClient } from 'https://deno.land/x/postgres/client.ts';
 
 const env = config();
 
@@ -8,7 +7,6 @@ let pgPort: number | string | undefined = env.PG_PORT;
 if (typeof pgPort === 'string') {
   pgPort = parseInt(pgPort as string);
 }
-
 
 const dbSettings = {
   user: env.PG_USER,
@@ -18,7 +16,7 @@ const dbSettings = {
   port: pgPort,
 };
 
-const POOL_CONNECTIONS = 3; // breaks at 10+ due to ElephantSQL
+const POOL_CONNECTIONS = 2; // breaks at 10+ due to ElephantSQL
 
 let pool = new Pool(dbSettings, POOL_CONNECTIONS);
 

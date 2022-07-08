@@ -13,6 +13,8 @@ If you are running this demo on a windows machine, ensure you are using Windows 
 must use deprecated version of deno:
 deno upgrade --version 1.21.3
 
+deno install -qAf --unstable https://deno.land/x/denon/denon.ts
+
 To start the program:
 1. run redis-server to start redis.
 2. open another bash terminal and set the path variables in the terminal:
