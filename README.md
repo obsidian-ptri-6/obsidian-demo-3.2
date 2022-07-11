@@ -24,3 +24,4 @@ To start the program:
 
 Required Repairs
 - fix line 10 on deps.ts; the obsidian wrapper is still using dev.jspm.io on deno.land
+- redis-cli monitor | grep -i "rpush"
