@@ -6,8 +6,7 @@ Install the latest version of Redis to create an instance
 
 If you are running this demo on a windows machine, ensure you are using Windows Subsystem for Linux (WSL2).
 
-must use deprecated version of deno:
-deno upgrade --version 1.21.3
+must use deprecated version of deno: deno upgrade --version 1.21.3
 
 deno install -qAf --unstable https://deno.land/x/denon/denon.ts
 
@@ -23,4 +22,3 @@ Setup your own SQL database instance and replace the environment variables in th
 
 ## Future Repairs
 - fix line 10 on deps.ts; the obsidian wrapper is still using dev.jspm.io on deno.land
-- redis-cli monitor | grep -i "rpush"
