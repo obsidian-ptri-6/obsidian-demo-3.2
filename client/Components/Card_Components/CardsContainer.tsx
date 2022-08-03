@@ -150,40 +150,22 @@ function CardsContainer(props: any) {
     }
   `,
 
-    moviesByReleaseYear:
-    `query ($order: ReleaseYearOrder) {
-      movies(input: {order : $order }) {
+    moviesByReleaseYear: `query {
+      movies(input: {order : DESC }) {
         id
         __typename
         title
         releaseYear
+        genre
         actors {
           id
           __typename
           firstName
           lastName
         }
-        genre
       }
-  }
-   ` 
-    
-//     `query {
-//     movies(input: {order : ASC }) {
-//       id
-//       __typename
-//       title
-//       releaseYear
-//       actors {
-//         id
-//         __typename
-//         firstName
-//         lastName
-//       }
-//       genre
-//     }
-// }
-//   `
+    }
+   `
   ,
 
     addMovie: `mutation {
@@ -232,8 +214,10 @@ function CardsContainer(props: any) {
     setGqlRequest(allMoviesQuery);
     const start = Date.now();
     const res = await query(allMoviesQuery);
+    console.log('fetchAllMovies res', res)
     setQueryTime(Date.now() - start);
     const actorRes = await query(allActorsQuery);
+    console.log('fetchAllMovies actorRes', actorRes)
     setActorResponse(actorRes.data);
     setDisplay('');
     setDashResponse(res.data);
@@ -274,6 +258,7 @@ function CardsContainer(props: any) {
   };
 
   const fetchReleaseYear = async (e: any) => {
+    console.log(e)
     setGqlRequest(moviesByReleaseYear);
     const start = Date.now();
     const res = await query(moviesByReleaseYear);
