@@ -18,7 +18,7 @@ declare global {
 const App = () => {
   return (
     <ObsidianWrapper>
-      <div className="container mx-auto bg-gray-900  ">
+      <div className="container mx-auto bg-gray-900 ">
         <Header />
         <Instructions />
         <div className="shadow overflow-y-visible border bg-gray-700 rounded-xl p-3 mb-5 ">

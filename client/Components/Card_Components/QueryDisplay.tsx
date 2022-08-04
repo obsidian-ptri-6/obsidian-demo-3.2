@@ -61,9 +61,9 @@ const QueryDisplay = (props: any) => {
   };
 
   const handleSubmit = (e: any) => {
-    if (type === 'ALLMOVIES') allMovies();
-    if (type === 'ALLACTORS') allActors();
-    if (type === 'MOVIESYEAR') byYear();
+    if (type === 'ALLMOVIES') allMovies(e);
+    if (type === 'ALLACTORS') allActors(e);
+    if (type === 'MOVIESYEAR') byYear(e);
     else if (genreOptions.includes(type)) {
       byGenre(genre);
     }
@@ -87,7 +87,7 @@ const QueryDisplay = (props: any) => {
                 id="genres"
                 value={type}
                 onChange={(e: any) => handleDropChange(e.target.value)}
-                className="m-1 p-1 block w-full  pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                className="m-1 p-1 block w-full pr-4 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               >
                 <option value="">Select Query</option>
                 <option value="ALLMOVIES">All Movies</option>
