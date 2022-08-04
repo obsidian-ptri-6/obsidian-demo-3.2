@@ -2,6 +2,7 @@
 
 Install the latest version of Deno  
 Install the latest version of Redis to create an instance  
+you must install and configure the obsidian dev tool
 
 If you are running this demo on a windows machine, ensure you are using Windows Subsystem for Linux (WSL2).
 
