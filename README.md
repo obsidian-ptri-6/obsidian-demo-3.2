@@ -3,6 +3,7 @@
 ## Prerequisites
 Install the latest version of Deno  
 Install the latest version of Redis to create an instance  
+you must install and configure the obsidian dev tool
 
 If you are running this demo on a windows machine, ensure you are using Windows Subsystem for Linux (WSL2).
 
@@ -17,8 +18,8 @@ Setup your own SQL database instance and replace the environment variables in th
 2. open another bash terminal and set the path variables in the terminal:
     export DENO_INSTALL="/home/crawforn/.deno"
     export PATH="$DENO_INSTALL/bin:$PATH"
-3. start the server with: denon start
+3. run denon start in your terminal
 4. open localhost:3000/
 
-## Future Repairs
+Required Repairs
 - fix line 10 on deps.ts; the obsidian wrapper is still using dev.jspm.io on deno.land
